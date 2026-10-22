@@ -18,14 +18,13 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install Newman & Reporters
+      - name: Install Newman & Reporters Locally
         run: |
-          sudo npm install -g newman
-          sudo npm install -g newman-reporter-htmlextra
+          npm install newman newman-reporter-htmlextra
 
       - name: Run Newman Tests with Data-Driven
         run: |
-          newman run ReqRes_Collection.json \
+          npx newman run ReqRes_Collection.json \
             -e ReqRes_Environment.json \
             -d users.csv \
             --reporters cli,htmlextra \
