@@ -11,17 +11,17 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
 
       - name: Install Newman & Reporters
         run: |
-          npm install -g newman
-          npm install -g newman-reporter-htmlextra
+          sudo npm install -g newman
+          sudo npm install -g newman-reporter-htmlextra
 
       - name: Run Newman Tests with Data-Driven
         run: |
@@ -33,7 +33,7 @@ jobs:
 
       - name: Upload HTML Report Artifact
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: api-test-report
           path: report.html
