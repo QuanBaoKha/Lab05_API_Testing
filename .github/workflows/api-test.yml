@@ -18,8 +18,9 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install Newman & Reporters Locally
+      - name: Initialize package.json and install Newman
         run: |
+          npm init -y
           npm install newman newman-reporter-htmlextra
 
       - name: Run Newman Tests with Data-Driven
